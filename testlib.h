@@ -2,20 +2,34 @@
  * It is strictly recommended to include "testlib.h" before any other include 
  * in your code. In this case testlib overrides compiler specific "random()".
  *
+ * 强烈建议在代码中包含其他任何内容之前，先包含 "testlib.h" 。
+ * 在这种情况下， testlib 会覆盖编译器特定的 "random()" 。
+ *
  * If you can't compile your code and compiler outputs something about 
  * ambiguous call of "random_shuffle", "rand" or "srand" it means that 
  * you shouldn't use them. Use "shuffle", and "rnd.next()" instead of them
  * because these calls produce stable result for any C++ compiler. Read 
  * sample generator sources for clarification.
+ * 
+ * 如果您无法编译代码，并且编译器输出有关 "random_shuffle" , "rand" 或 "srand" 的歧义调用的信息，则意味着您不应使用它们。
+ * 使用 "shuffle" 和 "rnd.next()" 代替它们，因为这些调用对于任何 C++ 编译器都会产生稳定的结果。
+ * 阅读生成器样例源代码以获得更清晰的理解。
  *
  * Please read the documentation for class "random_t" and use "rnd" instance in
  * generators. Probably, these sample calls will be usefull for you:
+ *
+ * 请阅读类 "random_t" 的文档，并在生成器中使用 "rnd" 实例。 这些示例调用可能对您有用：
+ *
  *              rnd.next(); rnd.next(100); rnd.next(1, 2); 
  *              rnd.next(3.14); rnd.next("[a-z]{1,100}").
  *
  * Also read about wnext() to generate off-center random distribution.
  *
+ * 另请阅读有关 wnext() 以生成偏心随机分布的信息。
+ * 
  * See https://github.com/MikeMirzayanov/testlib/ to get latest version or bug tracker.
+ *
+ * 请参阅 https://github.com/MikeMirzayanov/testlib/ 以获取最新版本或错误跟踪器。
  */
 
 #ifndef _TESTLIB_H_
