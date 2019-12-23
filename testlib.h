@@ -573,12 +573,19 @@ private:
  * way to use randoms instead of rand() function or self-written 
  * randoms.
  *
+ * 使用 random_t 实例生成随机值。 建议使用其生成的随机数代替 rand() 函数或自写随机数。
+ *
  * Testlib defines global variable "rnd" of random_t class.
  * Use registerGen(argc, argv, 1) to setup random_t seed be command
  * line (to use latest random generator version).
  *
+ * Testlib 定义 random_t 类的全局变量 "rnd" 。
+ * 使用 registerGen(argc, argv, 1) 通过命令行设置 random_t 种子（使用最新的随机生成器版本）。
+ *
  * Random generates uniformly distributed values if another strategy is
  * not specified explicitly.
+ *
+ * 如果未明确指定其他策略，则随机数生成器会生成均匀分布的值。
  */
 class random_t
 {
