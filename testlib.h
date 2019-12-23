@@ -4122,10 +4122,19 @@ void registerGen(int argc, char* argv[])
 #else
 #ifdef __GNUC__
 #if (__GNUC__ > 4) || ((__GNUC__ == 4) && (__GNUC_MINOR__ > 4))
-    __attribute__ ((deprecated("Use registerGen(argc, argv, 0) or registerGen(argc, argv, 1)."
+    __attribute__ ((deprecated(
+    		" Use registerGen(argc, argv, 0) or registerGen(argc, argv, 1)."
+    		/* 使用 registerGen(argc, argv, 0) 或 registerGen(argc, argv, 1) 。 */
+
             " The third parameter stands for the random generator version."
+            /* 第三个参数代表随机生成器版本。 */
+
             " If you are trying to compile old generator use macro -DUSE_RND_AS_BEFORE_087 or registerGen(argc, argv, 0)."
-            " Version 1 has been released on Spring, 2013. Use it to write new generators.")))
+            /* 如果您尝试编译旧的生成器，请使用宏 -DUSE_RND_AS_BEFORE_087 或 registerGen(argc, argv, 0) 。 */
+
+            " Version 1 has been released on Spring, 2013. Use it to write new generators."
+            /* 版本 1 已于 2013 年春季发布。使用它来编写新的生成器。 */
+            )))
 #else
     __attribute__ ((deprecated))
 #endif
@@ -4421,10 +4430,17 @@ int rand() RAND_THROW_STATEMENT
 }
 
 #if defined(__GNUC__) && !defined(__clang__)
-__attribute__ ((error("Don't use srand(), you should use " 
+__attribute__ ((error(
+		"Don't use srand(), you should use "
         "'registerGen(argc, argv, 1);' to initialize generator seed "
         "by hash code of the command line params. The third parameter "
-        "is randomGeneratorVersion (currently the latest is 1).")))
+        "is randomGeneratorVersion (currently the latest is 1)."
+      /*
+       * 不要使用srand() ，而应使用 'registerGen(argc, argv, 1);'
+	   * 通过命令行参数的哈希码初始化生成器种子。 
+	   * 第三个参数是 randomGeneratorVersion （当前最新值为 1 ）。
+	   */
+        )))
 #endif
 #ifdef _MSC_VER
 #   pragma warning( disable : 4273 )
