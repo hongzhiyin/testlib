@@ -657,12 +657,14 @@ public:
     static int version;
 
     /* New random_t with fixed seed. */
+    /* 带有固定种子的 random_t */
     random_t()
         : seed(3905348978240129619LL)
     {
     }
 
     /* Sets seed by command line. */
+    /* 通过命令行设置种子 */
     void setSeed(int argc, char* argv[])
     {
         random_t p;
@@ -680,6 +682,7 @@ public:
     }
 
     /* Sets seed by given value. */ 
+    /* 通过给定值设置种子 */
     void setSeed(long long _seed)
     {
         _seed = (_seed ^ multiplier) & mask;
@@ -688,6 +691,7 @@ public:
 
 #ifndef __BORLANDC__
     /* Random string value by given pattern (see pattern documentation). */
+    /* 通过给定模式生成的随机字符串值（参见模式文档） */
     std::string next(const std::string& ptrn)
     {
         pattern p(ptrn);
@@ -695,6 +699,7 @@ public:
     }
 #else
     /* Random string value by given pattern (see pattern documentation). */
+    /* 通过给定模式生成的随机字符串值（参见模式文档） */
     std::string next(std::string ptrn)
     {
         pattern p(ptrn);
@@ -4423,9 +4428,12 @@ void setName(const char* format, ...)
 /* 
  * Do not use random_shuffle, because it will produce different result
  * for different C++ compilers.
+ * 
+ * 不要使用 random_shuffle ，因为它将对不同的 C++ 编译器产生不同的结果。
  *
  * This implementation uses testlib random_t to produce random numbers, so
  * it is stable.
+ * 该实现使用 testlib random_t 生成随机数，因此它是稳定的。
  */ 
 template<typename _RandomAccessIter>
 void shuffle(_RandomAccessIter __first, _RandomAccessIter __last)
