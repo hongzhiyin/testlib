@@ -132,9 +132,15 @@ const char* latestFeatures[] = {
     "Fixed issues 19-21, added __attribute__ format printf",  
     "Some bug fixes",  
     "ouf.readInt(1, 100) and similar calls return WA",  
+    
     "Modified random_t to avoid integer overflow",  
+    /* 修改了 random_t 以避免整型溢出 */
+    
     "Truncated checker output [patch by Stepan Gatilov]",  
+    
     "Renamed class random -> class random_t",  
+    /* 类 random 重命名为 random_t */
+    
     "Supported name parameter for read-and-validation methods, like readInt(1, 2, \"n\")",  
     "Fixed bug in readDouble()",  
     "Improved ensuref(), fixed nextLine to work in case of EOF, added startTest()",  
@@ -518,10 +524,17 @@ static void __testlib_set_binary(std::FILE* file)
  * Very simple regex-like pattern.
  * It used for two purposes: validation and generation.
  * 
+ * 非常简单的类似正则表达式的模式。
+ * 它用于两个目的：验证和生成。
+ * 
  * For example, pattern("[a-z]{1,5}").next(rnd) will return
  * random string from lowercase latin letters with length 
  * from 1 to 5. It is easier to call rnd.next("[a-z]{1,5}") 
  * for the same effect. 
+ * 
+ * 例如， pattern("[a-z]{1,5}").next(rnd) 将返回
+ * 长度从 1 到 5 的小写拉丁字母的随机字符串。
+ * 调用 rnd.next("[a-z]{1,5}") 具有相同的效果。
  * 
  * Another samples:
  * "mike|john" will generate (match) "mike" or "john";
@@ -529,21 +542,37 @@ static void __testlib_set_binary(std::FILE* file)
  * "id-([ac]|b{2})" will generate (match) "id-a", "id-bb", "id-c";
  * "[^0-9]*" will match sequences (empty or non-empty) without digits, you can't 
  * use it for generations.
+ * 
+ * 另一个例子：
+ * "mike|john" 将生成（匹配） "mike" 或 "john" 。
+ * "-?[1-9][0-9]{0,3}" 将生成（匹配）从 -9999 到 9999 的非零整数。
+ * "id-([ac]|b{2})" 将生成（匹配） "id-a", "id-bb", "id-c" 。
+ * "[^0-9]*" 将匹配无数字的序列（空或非空），您不能将其用于生成器。
  *
  * You can't use pattern for generation if it contains meta-symbol '*'. Also it
  * is not recommended to use it for char-sets with meta-symbol '^' like [^a-z].
  *
+ * 如果模式包含元符号 '*' ，则不能使用模式进行生成。
+ * 另外，也不建议将其用于带有元符号 '^' 的字符集，例如 [^a-z] 。
+ * 
  * For matching very simple greedy algorithm is used. For example, pattern
  * "[0-9]?1" will not match "1", because of greedy nature of matching.
  * Alternations (meta-symbols "|") are processed with brute-force algorithm, so 
  * do not use many alternations in one expression.
+ * 
+ * 使用了非常简单的贪心算法用于匹配。例如，由于匹配的贪心策略，模式 "[0-9]?1" 将不能匹配 "1" 。
+ * 替换（元符号 '|' ）是用暴力算法处理的，因此不要在一个表达式中使用很多替换。
  *
  * If you want to use one expression many times it is better to compile it into
  * a single pattern like "pattern p("[a-z]+")". Later you can use 
  * "p.matches(std::string s)" or "p.next(random_t& rd)" to check matching or generate
  * new string by pattern.
  * 
+ * 如果要多次使用一个表达式，最好将其编译成单个模式，例如 "pattern p("[a-z]+")" 。
+ * 之后，您可以使用 "p.matches(std::string s)" 或 "p.next(random_t& rd)" 来检查匹配或按模式生成新的字符串
+ * 
  * Simpler way to read token and check it for pattern matching is "inf.readToken("[a-z]+")".
+ * 读取标记并检查其是否与模式匹配的简单方法是 "inf.readToken("[a-z]+")" 。
  */
 class random_t;
 
