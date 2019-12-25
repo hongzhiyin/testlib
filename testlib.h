@@ -580,12 +580,19 @@ class pattern
 {
 public:
     /* Create pattern instance by string. */
+    /* 通过字符串创建模式实例 */
     pattern(std::string s);
+
     /* Generate new string by pattern and given random_t. */
+    /* 通过模式生成新字符串并传给 random_t */
     std::string next(random_t& rnd) const;
+    
     /* Checks if given string match the pattern. */
+    /* 检查给定的字符串是否与模式匹配 */
     bool matches(const std::string& s) const;
+
     /* Returns source string of the pattern. */
+    /* 返回模式的源字符串 */
     std::string src() const;
 private:
     bool matches(const std::string& s, size_t pos) const;
