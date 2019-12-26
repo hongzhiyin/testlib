@@ -708,6 +708,7 @@ public:
 #endif
 
     /* Random value in range [0, n-1]. */
+    /* [0, n-1] 范围内的整型随机值 */
     int next(int n)
     {
         if (n <= 0)
@@ -773,6 +774,7 @@ public:
     }
 
     /* Returns random value in range [from,to]. */
+    /* 返回 [from, to] 范围内的整型随机值 */
     int next(int from, int to)
     {
         return int(next((long long)to - from + 1) + from);
@@ -813,6 +815,7 @@ public:
     }
 
     /* Random double value in range [0, 1). */
+    /* [0, 1) 范围内的浮点型随机值 */
     double next() 
     {
         long long left = ((long long)(nextBits(26)) << 27);
@@ -821,12 +824,14 @@ public:
     }
 
     /* Random double value in range [0, n). */
+    /* [0, n) 范围内的浮点型随机值 */
     double next(double n)
     {
         return n * next();
     }
 
     /* Random double value in range [from, to). */
+    /* [from, to) 范围内的浮点型随机值 */
     double next(double from, double to)
     {
         if (from > to)
@@ -835,6 +840,7 @@ public:
     }
 
     /* Returns random element from container. */
+    /* 从容器内返回随机元素 */
     template <typename Container>
     typename Container::value_type any(const Container& c)
     {
@@ -845,6 +851,7 @@ public:
     }
 
     /* Returns random element from iterator range. */
+    /* 返回迭代器范围内的随机元素 */
     template <typename Iter>
     typename Iter::value_type any(const Iter& begin, const Iter& end)
     {
@@ -855,6 +862,7 @@ public:
     }
 
     /* Random string value by given pattern (see pattern documentation). */
+    /* 通过给定模式生成的随机字符串值（参见模式文档） */
 #ifdef __GNUC__
     __attribute__ ((format (printf, 2, 3)))
 #endif
