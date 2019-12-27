@@ -874,11 +874,18 @@ public:
 
     /* 
      * Weighted next. If type == 0 than it is usual "next()".
+     * 
+     * 偏心随机。如果 type == 0 则为一般的 "next()" 。
      *
      * If type = 1, than it returns "max(next(), next())"
      * (the number of "max" functions equals to "type").
+     * 
+     * 如果 type = 1 ，则返回 "max(next(), next())"
+     * （ "max" 函数的数量等于 "type" ）
      *
      * If type < 0, than "max" function replaces with "min".
+     * 
+     * 如果 type < 0 ，则把 "max" 替换为 "min" 。
      */
     int wnext(int n, int type)
     {
@@ -911,6 +918,7 @@ public:
     }
     
     /* See wnext(int, int). It uses the same algorithms. */
+    /* 请参见 wnext(int, int) 。它使用相同的算法。 */
     long long wnext(long long n, int type)
     {
         if (n <= 0)
@@ -1033,6 +1041,7 @@ public:
     }
 
     /* Returns weighted random value in range [from, to]. */
+    /* 返回范围在 [from, to] 的偏心随机值 */
     int wnext(int from, int to, int type)
     {
         if (from > to)
@@ -1089,6 +1098,7 @@ public:
     }
 
     /* Returns weighted random element from container. */
+    /* 返回容器内的偏心随机元素 */
     template <typename Container>
     typename Container::value_type wany(const Container& c, int type)
     {
@@ -1099,6 +1109,7 @@ public:
     }
 
     /* Returns weighted random element from iterator range. */
+    /* 返回迭代器范围内的偏心随机元素 */
     template <typename Iter>
     typename Iter::value_type wany(const Iter& begin, const Iter& end, int type)
     {
@@ -1108,6 +1119,7 @@ public:
         return *(begin + wnext(size, type));
     }
 
+    /* 生成一个以 first 为起始索引的随机排列， first 默认为 0 */
     template<typename T, typename E>
     std::vector<E> perm(T size, E first)
     {
